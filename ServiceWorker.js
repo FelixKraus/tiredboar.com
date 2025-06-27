@@ -1,10 +1,10 @@
-const cacheName = "Tired Boar Games-OB-Spice Race-1.0.3";
+const cacheName = "Tired Boar Games-OB-Spice Race-1.0.4";
 const contentToCache = [
-    "Build/Version 1.2.loader.js?v=1.0.3",
-    "Build/Version 1.2.framework.js.unityweb?v=1.0.3",
-    "Build/Version 1.2.data.unityweb?v=1.0.3",
-    "Build/Version 1.2.wasm.unityweb?v=1.0.3",
-    "TemplateData/style.css?v=1.0.3"
+    "Build/Version 1.2.loader.js?v=1.0.4",
+    "Build/Version 1.2.framework.js.unityweb?v=1.0.4",
+    "Build/Version 1.2.data.unityweb?v=1.0.4",
+    "Build/Version 1.2.wasm.unityweb?v=1.0.4",
+    "TemplateData/style.css?v=1.0.4"
 ];
 
 self.addEventListener('install', function (e) {
