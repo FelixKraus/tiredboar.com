@@ -1,11 +1,10 @@
-const cacheName = "Tired Boar Games-OB-Spice Race-1.0.2";
+const cacheName = "Tired Boar Games-OB-Spice Race-1.0.3";
 const contentToCache = [
-    "Build/Version 1.2.loader.js",
-    "Build/Version 1.2.framework.js.unityweb",
-    "Build/Version 1.2.data.unityweb",
-    "Build/Version 1.2.wasm.unityweb",
-    "TemplateData/style.css"
-
+    "Build/Version 1.2.loader.js?v=1.0.3",
+    "Build/Version 1.2.framework.js.unityweb?v=1.0.3",
+    "Build/Version 1.2.data.unityweb?v=1.0.3",
+    "Build/Version 1.2.wasm.unityweb?v=1.0.3",
+    "TemplateData/style.css?v=1.0.3"
 ];
 
 self.addEventListener('install', function (e) {
@@ -20,14 +19,31 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('fetch', function (e) {
     e.respondWith((async function () {
-      let response = await caches.match(e.request);
-      console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-      if (response) { return response; }
-
-      response = await fetch(e.request);
-      const cache = await caches.open(cacheName);
-      console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
-      cache.put(e.request, response.clone());
-      return response;
+        try {
+            // Try fetching from the network first
+            const networkResponse = await fetch(e.request);
+            const cache = await caches.open(cacheName);
+            // Cache the new response if successful
+            await cache.put(e.request, networkResponse.clone());
+            return networkResponse;
+        } catch (err) {
+            // Fall back to cache if offline
+            const cachedResponse = await caches.match(e.request);
+            return cachedResponse || new Response("Offline fallback");
+        }
     })());
+});
+
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((keys) => {
+            return Promise.all(
+                keys.map((key) => {
+                    if (key !== cacheName) {
+                        return caches.delete(key); // Delete old caches
+                    }
+                })
+            );
+        }).then(() => self.clients.claim()) // Take control of all clients
+    );
 });
