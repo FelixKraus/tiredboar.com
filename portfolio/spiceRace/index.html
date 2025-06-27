@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Spice Race</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.centered-iframe {
+				display: flex;
+				justify-content: center;
+				margin: 20px 0;
+			}
+			.responsive-gif {
+				max-width: 70%;
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+		<style>
+			.image-pair {
+				display: flex;
+				justify-content: center;
+				gap: 20px; /* This adds space between images */
+				margin: 30px 0;
+				flex-wrap: wrap; /* Allows stacking on mobile */
+			}
+
+			.image-container {
+				flex: 1; /* Makes both containers equal width */
+				min-width: 300px; /* Minimum width before stacking */
+				max-width: 48%; /* Prevents images from becoming too wide */
+			}
+
+			.image-container img {
+				width: 100%;
+				height: auto;
+				border-radius: 4px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+			}
+
+			/* Responsive adjustment for mobile */
+			@media (max-width: 768px) {
+				.image-container {
+					max-width: 100%;
+					min-width: unset;
+				}
+			}
+		</style>
+
+		<style>
+			/* Responsive video container - matches your GIF styling */
+			.video-container {
+				max-width: 70%;
+				margin: 20px auto;
+				display: block;
+			}
+
+			/* Video styling */
+			.portfolio-video {
+				width: 100%;
+				height: auto;
+				border-radius: 4px; /* Optional: matches Phantom theme's subtle rounding */
+				box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Soft shadow like your images */
+			}
+		</style>
+
+		<style>
+			.credits-footer {
+				margin-top: 2rem;
+				color: #777;
+				font-size: 0.9em;
+				border-top: 1px dashed rgba(255,255,255,0.1);
+				padding-top: 1rem;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="../index.html" class="logo">
+									<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Felix Kraus</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="https://felixkraus.itch.io/">Itch.io</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1><a href="https://tiredboar.com/obSpiceRace/">Spice Race</a></h1>
+							<span class="image main"><img src="../images/spiceRace/spiceRace_header.png" alt="" /></span>
+							<p>For this project I was approached by a local politician to create a campaign game for the city Ludwigshafen in about 3-4 weeks. He wanted something, that would garner interest and at the same time be heavily connected to the city.
+								That led to two key constraints:</p>
+
+							<h3></h3>
+							<ol>
+								<li>
+									The city lacked iconic exports/products to feature
+								</li>
+								<li>
+									The client initially wanted a mobile app - a format I argued would limit reach.
+								</li>
+							</ol>
+							<p></p>
+
+							<h3><strong>My solution:</strong></h3>
+							<ul>
+								<li><strong>Landmark-Based Design:</strong> Used Google Maps’ 3D scans as templates to recreate Ludwigshafen’s architecture in Blender, converting landmarks like the Wilhelm-Hack-Museum into low-poly models with cohesive art direction.</li>
+								<li><strong>Browser-First Approach:</strong> Developed in WebGL (Unity) to eliminate download barriers, with responsive scaling for mobile/desktop and adaptive controls (touch steering vs. keyboard).</li>
+								<li><strong>Campaign Integration:</strong>Designed gameplay around collecting "spice mixes"—the politician’s real-world promotional gift—while drifting through a condensed version of the city.</li>
+							</ul>
+							<p></p>
+							<img class="responsive-gif"src="../images/spiceRace/ludwigshafen.png" alt="" />
+							
+							
+							<p></p>
+							<p>I had several highlights while working on this project and a lot of things I learned. In previous projects optimization was always relevant, but not this crucial. I had to reduce polycount, reduce drawcalls with limited materials and textures and tried to keep the game as small as possible. In the end everything was textured with one palette of 16 colour pixels. Meaning: <i>all the textures were about 48 bytes big!</i></p>
+							<p></p>
+							<img class="responsive-gif"src="../images/spiceRace/sweetie-16-32x.png" alt="" />
+							<p class="caption">All textures in 16 pixels!</p>
+							<p></p>
+							<p>The small texture size was only possible through changing the UVs of every model to a very small size and stretching them over the texture. Here is the result:</p>
+							<div class="image-pair">
+								<div class="image-container">
+									<img src="../images/spiceRace/wilhelm_Hack_scan.png" alt="First image description" />
+									<p class="caption">The scan from Google Maps imported into Blender. It's called the Wilhelm-Hack-Museum</p>
+								</div>
+								<div class="image-container">
+									<img src="../images/spiceRace/wilhelm_Hack.png" alt="Second image description" />
+									<p class="caption">The final version of the ingame equivalent</p>
+								</div>
+							</div>
+							<p>At the end I shipped the final version <a href="https://tiredboar.com/obSpiceRace/">here</a></p>
+							<div class="video-container">
+								<video controls class="portfolio-video" poster="../images/spiceRace/spiceRace_example.png">
+									<source src="../images/spiceRace/spiceRace_example.mp4" type="video/mp4">
+									Your browser does not support HTML5 video.
+								</video>
+								
+							</div>
+
+							<p></p>
+							<h3>What I learned:</h3>
+							<ul>
+								<li><strong>Check all receiving devices:</strong> I tested only on PC for too long. Getting the grasp of the game feel on Mobile would have been useful for game design decisions.</li>
+								<li><strong>WebGL Limitations:</strong> Discovered mobile browsers throttle performance after 30s—worked around it by simplifying shaders when the game was being played on Mobile.</li>
+							</ul>
+
+							<div class="artist-credits">
+								<h3>Project Credits</h3>
+
+								<div class="credit-group">
+									<span class="credit-role">Sound Design and Music:</span>
+									<div class="artist-badges">
+										<a href="https://x.com/ViktorKraus2" class="artist-badge" target="_blank">
+											<span>Viktor Kraus</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<!--
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer> -->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	
+	
+
+	</body>
+</html>
