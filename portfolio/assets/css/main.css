@@ -99,7 +99,7 @@ input, select, textarea {
 	}
 
 body {
-	background: linear-gradient(to top,#B4B4B4, #E6E8E5);
+	background: linear-gradient(to top,#3C4144, #26292B);
 	background-attachment: fixed; /* Ensures gradient covers entire page */
 	min-height: 100vh; /* Full viewport height */
 }
@@ -118,7 +118,7 @@ body {
 /* Type */
 
 	body, input, select, textarea {
-		color: #323337;
+		color: #C7C2BB;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
@@ -147,8 +147,8 @@ body {
 		-ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		transition: border-bottom-color 0.2s ease, color 0.2s ease;
 		text-decoration: none;
-		color: #585858;
-		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
+		color: #882E30;
+		border-bottom: dotted 1px rgba(188, 188, 188, 0.5);
 	}
 
 		a:hover {
@@ -3325,7 +3325,7 @@ body {
 .artist-credits {
 	margin: 2.5rem 0;
 	padding-top: 1rem;
-	border-top: 3px solid rgba(50, 51, 55,0.4);
+	border-top: 3px solid rgba(150, 151, 155,0.4);
 }
 
 .credit-group {
@@ -3338,7 +3338,7 @@ body {
 
 .credit-role {
 	font-size: 0.95em;
-	color: #323337;
+	color: #C7C2BB;
 	min-width: 120px;
 }
 
@@ -3365,7 +3365,7 @@ body {
 }
 
 .artist-badge span {
-	color: #323337;
+	color: #C7C2BB;
 }
 
 /* Responsive adjustment */
