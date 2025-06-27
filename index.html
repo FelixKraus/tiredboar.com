@@ -85,6 +85,12 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
       }
 
+      if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(regs => {
+        regs.forEach(reg => reg.unregister());
+    });
+}
+
 
       loadingBar.style.display = "block";
 
