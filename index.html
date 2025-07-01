@@ -1,111 +1,195 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | OB-Spice Race</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="manifest" href="manifest.webmanifest">
-  </head>
-  <body>
-    <div id="unity-container">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-    </div>
-    <script>
-      window.addEventListener("load", function () {
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("ServiceWorker.js");
-        }
-      });
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Portfolio by Felix Kraus</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
 
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var warningBanner = document.querySelector("#unity-warning");
+	<style>
+		.square-thumb {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			overflow: hidden;
+		}
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+		.square-thumb img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			display: block;
+		}
+	</style>
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Version 1.2.loader.js";
-      var config = {
-        arguments: [],
-        dataUrl: buildUrl + "/Version 1.2.data.unityweb",
-        frameworkUrl: buildUrl + "/Version 1.2.framework.js.unityweb",
-        codeUrl: buildUrl + "/Version 1.2.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Tired Boar Games",
-        productName: "OB-Spice Race",
-        productVersion: "1.0.2",
-        showBanner: unityShowBanner,
-      };
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-      }
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/brightLogo.svg" alt="" /></span><span class="title">Felix Kraus</span>
+								</a>
 
-      if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => {
-        regs.forEach(reg => reg.unregister());
-    });
-}
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
 
+						</div>
+					</header>
 
-      loadingBar.style.display = "block";
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="https://felixkraus.itch.io/">Itch.io</a></li>
+						</ul>
+					</nav>
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
-  </body>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Welcome to my portfolio!<br />
+								</h1>
+								<p>I'm a game designer based in germany, and I'm mostly using Unity and Blender. If you want to play my games, most of them are available <a href="https://felixkraus.itch.io/">HERE</a>.</p>
+								<p>This is just a short overview of a few games I made and what they meant to me!</p>
+							</header>
+							<section class="tiles">
+								
+								<article class="style3">
+									<span class="image square-thumb">
+										<img src="images/spiceRace/KlausLogoRender.png" alt="" />
+									</span>
+									<a href="projects/spiceRace/">
+										<h2>Spice Race</h2>
+										<div class="content">
+											<p>A WebGL racing game for a mayoral campaign</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image square-thumb">
+										<img src="images/theMakerOfMasks.png" alt="" />
+									</span>
+									<a href="projects/theMakerOfMasks/">
+										<h2>The Maker Of Masks</h2>
+										<div class="content">
+											<p>A short horror story for the PS1 Horror Jam.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image square-thumb">
+										<img src="images/cubeshift/coverCubeshift.png" alt="" />
+									</span>
+									<a href="projects/cubeshift/">
+										<h2>Cubeshift</h2>
+										<div class="content">
+											<p>A small puzzle game I made to analyze FEZ and it's legacy.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style7">
+									<span class="image square-thumb">
+										<img src="images/bloodBeatClub/bloodBeatClub_cover2.jpg" alt="" />
+									</span>
+									<a href="projects/bloodBeatClub/">
+										<h2>Blood Beat Club</h2>
+										<div class="content">
+											<p>A game jam with artists in the industry.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style7">
+									<span class="image square-thumb">
+										<img src="images/rainbowboy/rainbowboy_cover.png" alt="" />
+									</span>
+									<a href="projects/rainbowBoy/">
+										<h2>Rainbow Boy</h2>
+										<div class="content">
+											<p>My first game I made for University.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image square-thumb">
+										<img src="images/deepCity/deepCity_cover.jpg" alt="" />
+									</span>
+									<a href="projects/deepCity/">
+										<h2>Deep City</h2>
+										<div class="content">
+											<p>My first horror jam and what I learned.</p>
+										</div>
+									</a>
+								</article>
+								
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<!--	<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							-->
+							<!--<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+							 -->
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
