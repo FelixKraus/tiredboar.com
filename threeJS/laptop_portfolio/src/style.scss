@@ -1,12 +1,17 @@
+@use "./styles/fonts.scss";
+@use "./styles/reset.scss";
+@use "./styles/variables.scss" as vars;
+
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Share Tech Mono', 'VT323', monospace;
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Share Tech Mono, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,10 +42,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 32px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: vars.$base-white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px vars.$base-black;
   max-width: 90%;
   max-height: 90%;
   overflow-y: auto;
