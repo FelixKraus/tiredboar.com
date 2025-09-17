@@ -61,7 +61,7 @@ function AnimatedBox() {
       <meshStandardMaterial color={color} wireframe={wireframe} />
       <PositionalAudio
         ref={audioRef}
-        url="/sound.mp3"
+        url="./sound.mp3"
         distance={5}
         loop={false}
         autoplay={false}
@@ -71,7 +71,7 @@ function AnimatedBox() {
 }
 
 function Model() {
-  const gltf = useLoader(GLTFLoader, '/LaptopPortfolio_with_Materials.glb');
+  const gltf = useLoader(GLTFLoader, './LaptopPortfolio_with_Materials.glb');
   return <primitive object={gltf.scene}/>;
 }
 
